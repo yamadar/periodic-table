@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>元素周期表 — Periodic Table of Elements</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@300;400;600&family=Noto+Serif+JP:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="shell">
+
+<header>
+  <div>
+    <h1>periodic <b>table</b></h1>
+    <div class="subtitle">元素周期表 — 一一八元素</div>
+  </div>
+  <div class="meta">
+    Elements <b>118</b><br>
+    Discovered <b>1669 — 2010</b><br>
+    Compiled by Claude
+  </div>
+</header>
+
+<div class="controls">
+  <input type="text" class="search" placeholder="検索 — name / symbol / number" id="search">
+  <div class="legend" id="legend"></div>
+</div>
+
+<div class="table" id="table"></div>
+
+<div class="fblock" id="lan-row">
+  <div class="fblock-label">Lanthanides 57–71</div>
+</div>
+<div class="fblock" id="act-row">
+  <div class="fblock-label">Actinides 89–103</div>
+</div>
+
+<section class="timeline-section">
+  <div class="timeline-header">
+    <h2>discovery <b>timeline</b></h2>
+  </div>
+  <div class="timeline-sub">発見の年表 — 紀元前9000年から二〇一〇年まで</div>
+
+  <div class="timeline-wrap" id="tl-wrap">
+    <svg class="timeline-svg" id="tl-svg" viewBox="0 0 2400 460" preserveAspectRatio="none"></svg>
+    <div class="tl-tip" id="tl-tip"></div>
+  </div>
+
+  <div class="timeline-stats" id="tl-stats"></div>
+</section>
+
+<section class="maps-section">
+  <div class="maps-header">
+    <h2>distribution <b>maps</b></h2>
+  </div>
+  <div class="maps-sub">分布マップ — 融点・沸点・常温状態</div>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="A">A · Temp Range<span class="tab-jp">温度帯</span></button>
+    <button class="tab" data-tab="B">B · Scatter<span class="tab-jp">散布図</span></button>
+    <button class="tab" data-tab="C">C · Heatmap<span class="tab-jp">ヒートマップ</span></button>
+  </div>
+
+  <!-- A. Range bars -->
+  <div class="tab-panel active" id="panel-A">
+    <div class="bars-controls">
+      <span class="ctrl-label">Sort 並び</span>
+      <button class="sort-btn active" data-sort="n">原子番号</button>
+      <button class="sort-btn" data-sort="mp">融点 ↑</button>
+      <button class="sort-btn" data-sort="bp">沸点 ↑</button>
+      <button class="sort-btn" data-sort="range">液体範囲幅</button>
+    </div>
+    <div class="bars-wrap">
+      <div class="bars-axis-wrap">
+        <svg class="bars-axis-svg" id="bars-axis" viewBox="0 0 1000 32" preserveAspectRatio="none"></svg>
+      </div>
+      <div class="bars-list-wrap" id="bars-list"></div>
+      <div class="bars-legend">
+        <span class="key"><span class="key-swatch" style="background:var(--ink-dim);opacity:0.3"></span>固体範囲</span>
+        <span class="key"><span class="key-swatch" style="background:var(--c-noble)"></span>液体範囲(mp → bp)</span>
+        <span class="key"><span class="key-swatch" style="background:var(--gold);width:2px;height:14px"></span>常温線 20°C</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- B. Scatter -->
+  <div class="tab-panel" id="panel-B">
+    <div class="scatter-wrap">
+      <svg class="scatter-svg" id="scatter" viewBox="0 0 800 720"></svg>
+    </div>
+  </div>
+
+  <!-- C. Heatmap -->
+  <div class="tab-panel" id="panel-C">
+    <div class="heat-modes">
+      <button class="heat-mode active" data-mode="mp">融点 Melting Point</button>
+      <button class="heat-mode" data-mode="bp">沸点 Boiling Point</button>
+      <button class="heat-mode" data-mode="phase">常温状態 Phase @ 20°C</button>
+    </div>
+    <div class="heat-grid" id="heat-grid"></div>
+    <div class="heat-grid" id="heat-lan" style="margin-top:14px"></div>
+    <div class="heat-grid" id="heat-act"></div>
+    <div class="heat-scale" id="heat-scale"></div>
+  </div>
+</section>
+
+<footer>
+  <span>Click element for detail</span>
+  <span>data: IUPAC 2021</span>
+</footer>
+
+</div>
+
+<aside class="panel" id="panel">
+  <button class="close" id="close">×</button>
+  <div id="panel-body"></div>
+</aside>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
