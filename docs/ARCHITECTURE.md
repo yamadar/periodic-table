@@ -27,4 +27,4 @@
 
 ## コマンド
 
-`npm run dev|test|build -w periodic-table`
+`npm install`（初回）/ `npm run dev` / `npm test` / `npm run build` / `npm run format`
