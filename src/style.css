@@ -889,6 +889,16 @@ footer {
 }
 .heat-cell.null .h-val { opacity: 0.3; }
 
+/* heatmap horizontal scroll — keeps the page from scrolling with the grid */
+.heat-scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+.heat-scroll::-webkit-scrollbar { height: 8px; }
+.heat-scroll::-webkit-scrollbar-track { background: var(--bg-0); }
+.heat-scroll::-webkit-scrollbar-thumb { background: var(--rule); }
+.heat-scroll::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
 .heat-scale {
   display: flex;
   align-items: center;
@@ -914,4 +924,43 @@ footer {
   .cell .num { font-size: 7px; }
   .cell .nm, .cell .ms { display: none; }
   .legend { width: 100%; }
+  .heat-grid { grid-template-columns: repeat(18, 38px); }
+
+  /* sticky section controls — pin each section's controls to the top while
+     its content scrolls underneath */
+  .controls {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    background: var(--bg-0);
+    border-bottom: 1px solid var(--rule);
+  }
+  .tabs {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: var(--bg-0);
+  }
+  .tab {
+    flex: 1;
+    height: 40px;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    letter-spacing: 0.06em;
+  }
+  .tab .tab-jp { display: none; }
+  .bars-controls,
+  .heat-modes {
+    position: sticky;
+    top: 40px;
+    z-index: 29;
+    padding: 10px 0;
+    background: var(--bg-0);
+    border-bottom: 1px solid var(--rule);
+  }
 }
