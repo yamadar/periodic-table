@@ -2,10 +2,10 @@
   --bg-0: #0a0e14;
   --bg-1: #11161e;
   --bg-2: #1a212c;
-  --ink: #e8ddc4;
-  --ink-dim: #8a8474;
-  --rule: #2a3340;
-  --gold: #c9a961;
+  --ink: #f3ead2;
+  --ink-dim: #b4ac95;
+  --rule: #3b4759;
+  --gold: #d8b873;
 
   /* category palette — muted, scientific */
   --c-alkali:        #d4756b;
@@ -18,7 +18,7 @@
   --c-noble:         #b56b9d;
   --c-lanthanide:    #a86b8a;
   --c-actinide:      #c97a7a;
-  --c-unknown:       #555;
+  --c-unknown:       #7c828c;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -177,7 +177,7 @@ h1 b {
   position: absolute;
   inset: 0;
   background: var(--c, transparent);
-  opacity: 0.14;
+  opacity: 0.2;
   pointer-events: none;
   transition: opacity 0.18s;
 }
@@ -194,7 +194,7 @@ h1 b {
   border-color: var(--c);
   z-index: 5;
 }
-.cell:hover::before { opacity: 0.28; }
+.cell:hover::before { opacity: 0.36; }
 .cell.dim { opacity: 0.18; }
 .cell.dim:hover { opacity: 1; }
 
