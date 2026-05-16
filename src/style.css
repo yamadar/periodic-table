@@ -926,12 +926,30 @@ footer {
   .legend { width: 100%; }
   .heat-grid { grid-template-columns: repeat(18, 38px); }
 
+  /* section headings — shrink and pin to the top while scrolling the section */
+  .timeline-header,
+  .maps-header {
+    position: sticky;
+    top: 0;
+    z-index: 32;
+    display: flex;
+    align-items: center;
+    height: 36px;
+    margin-bottom: 0;
+    background: var(--bg-0);
+    border-bottom: 1px solid var(--rule);
+  }
+  .timeline-header h2,
+  .maps-header h2 {
+    font-size: 18px;
+  }
+
   /* sticky section controls — pin each section's controls to the top while
      its content scrolls underneath */
   .controls {
     position: sticky;
     top: 0;
-    z-index: 30;
+    z-index: 31;
     margin-bottom: 20px;
     padding: 10px 0;
     background: var(--bg-0);
@@ -939,8 +957,8 @@ footer {
   }
   .tabs {
     position: sticky;
-    top: 0;
-    z-index: 30;
+    top: 36px;
+    z-index: 31;
     background: var(--bg-0);
   }
   .tab {
@@ -957,8 +975,8 @@ footer {
   .bars-controls,
   .heat-modes {
     position: sticky;
-    top: 40px;
-    z-index: 29;
+    top: 76px;
+    z-index: 30;
     padding: 10px 0;
     background: var(--bg-0);
     border-bottom: 1px solid var(--rule);
