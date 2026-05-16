@@ -23,19 +23,21 @@
   </div>
 </header>
 
-<div class="controls">
-  <input type="text" class="search" placeholder="検索 — name / symbol / number" id="search">
-  <div class="legend" id="legend"></div>
-</div>
+<section class="table-section">
+  <div class="controls">
+    <input type="text" class="search" placeholder="検索 — name / symbol / number" id="search">
+    <div class="legend" id="legend"></div>
+  </div>
 
-<div class="table" id="table"></div>
+  <div class="table" id="table"></div>
 
-<div class="fblock" id="lan-row">
-  <div class="fblock-label">Lanthanides 57–71</div>
-</div>
-<div class="fblock" id="act-row">
-  <div class="fblock-label">Actinides 89–103</div>
-</div>
+  <div class="fblock" id="lan-row">
+    <div class="fblock-label">Lanthanides 57–71</div>
+  </div>
+  <div class="fblock" id="act-row">
+    <div class="fblock-label">Actinides 89–103</div>
+  </div>
+</section>
 
 <section class="timeline-section">
   <div class="timeline-header">
@@ -99,9 +101,11 @@
       <button class="heat-mode" data-mode="bp">沸点 Boiling Point</button>
       <button class="heat-mode" data-mode="phase">常温状態 Phase @ 20°C</button>
     </div>
-    <div class="heat-grid" id="heat-grid"></div>
-    <div class="heat-grid" id="heat-lan" style="margin-top:14px"></div>
-    <div class="heat-grid" id="heat-act"></div>
+    <div class="heat-scroll">
+      <div class="heat-grid" id="heat-grid"></div>
+      <div class="heat-grid" id="heat-lan" style="margin-top:14px"></div>
+      <div class="heat-grid" id="heat-act"></div>
+    </div>
     <div class="heat-scale" id="heat-scale"></div>
   </div>
 </section>
