@@ -64,11 +64,15 @@ export function openPanel(el) {
       <div class="p-row"><dt>原子量</dt><dd>${el.mass}</dd></div>
       <div class="p-row"><dt>電子配置</dt><dd>${el.cfg}</dd></div>
       <div class="p-row"><dt>常温状態</dt><dd>${phaseJP(el.phase)}</dd></div>
-      <div class="p-row"><dt>融点 °C</dt><dd>${el.mp ?? '—'}</dd></div>
-      <div class="p-row"><dt>沸点 °C</dt><dd>${el.bp ?? '—'}</dd></div>
-      <div class="p-row"><dt>発見年</dt><dd>${discYear}</dd></div>
-      <div class="p-row"><dt>発見者</dt><dd>${el.by}</dd></div>
-      <div class="p-row" style="grid-template-columns:1fr"><dt style="margin-bottom:6px">用途・特徴</dt><dd style="font-family:'Noto Serif JP',serif;font-size:13px;line-height:1.7">${el.use}</dd></div>
+      <div class="p-row p-pair">
+        <div class="p-cell"><dt>融点 °C</dt><dd>${el.mp ?? '—'}</dd></div>
+        <div class="p-cell"><dt>沸点 °C</dt><dd>${el.bp ?? '—'}</dd></div>
+      </div>
+      <div class="p-row p-pair">
+        <div class="p-cell"><dt>発見年</dt><dd>${discYear}</dd></div>
+        <div class="p-cell"><dt>発見者</dt><dd>${el.by}</dd></div>
+      </div>
+      <div class="p-row p-full"><dt>用途・特徴</dt><dd class="p-use">${el.use}</dd></div>
     </dl>
     <div class="bohr-section">
       <div class="bohr-title">Bohr Model</div>
