@@ -28,7 +28,6 @@ html, body {
   color: var(--ink);
   font-family: "JetBrains Mono", monospace;
   min-height: 100vh;
-  overflow-x: auto;
 }
 
 body {
@@ -918,13 +917,23 @@ footer {
 
 /* responsive */
 @media (max-width: 900px) {
-  body { padding: 16px 8px; }
+  /* clip (not auto/scroll) so body never becomes a scroll container —
+     position: sticky must anchor to the viewport, not the body */
+  body { padding: 16px 8px; overflow-x: clip; }
   .table, .fblock { grid-template-columns: repeat(18, 38px); grid-auto-rows: 44px; gap: 2px; overflow-x: auto; }
   .cell .sym { font-size: 14px; }
   .cell .num { font-size: 7px; }
   .cell .nm, .cell .ms { display: none; }
-  .legend { width: 100%; }
+  .legend { width: 100%; gap: 4px; }
   .heat-grid { grid-template-columns: repeat(18, 38px); }
+
+  /* compact the controls so the pinned bars stay small */
+  .search { width: 100%; padding: 8px 12px; font-size: 12px; }
+  .chip { padding: 4px 7px; font-size: 9px; }
+  .chip::before { width: 7px; height: 7px; margin-right: 5px; }
+  .sort-btn, .heat-mode { padding: 5px 9px; font-size: 9px; }
+  .hm-en { display: none; }
+  .bars-legend, .heat-scale { flex-wrap: wrap; gap: 8px 16px; }
 
   /* section headings — shrink and pin to the top while scrolling the section */
   .timeline-header,
@@ -950,6 +959,7 @@ footer {
     position: sticky;
     top: 0;
     z-index: 31;
+    gap: 8px;
     margin-bottom: 20px;
     padding: 10px 0;
     background: var(--bg-0);
@@ -977,6 +987,8 @@ footer {
     position: sticky;
     top: 76px;
     z-index: 30;
+    gap: 6px;
+    flex-wrap: wrap;
     padding: 10px 0;
     background: var(--bg-0);
     border-bottom: 1px solid var(--rule);
