@@ -39,7 +39,7 @@ function initTabs() {
 function initBars(valid) {
   let currentSort = 'n';
 
-  const axisSvg = document.getElementById('bars-axis');
+  const axisEl = document.getElementById('bars-axis');
   const AXIS_W = 1000;
   const BAR_PAD_L = 8, BAR_PAD_R = 8;
   const BAR_INNER = AXIS_W - BAR_PAD_L - BAR_PAD_R;
@@ -47,47 +47,34 @@ function initBars(valid) {
   function xAt(t) {
     return BAR_PAD_L + tempToFrac(t) * BAR_INNER;
   }
+  // axis-x as a percentage so the HTML axis lines up with the bar SVGs
+  function xPct(t) {
+    return (xAt(t) / AXIS_W) * 100;
+  }
 
+  // Axis is HTML, not SVG: preserveAspectRatio="none" would squash the labels.
   const TICKS_A = [-273, -200, -100, 0, 100, 300, 500, 1000, 1500, 2000, 3000, 4000, 5000];
+  const MAJOR_A = new Set([-273, 0, 500, 1500, 5000]); // labels kept on narrow screens
   TICKS_A.forEach((t) => {
-    const x = xAt(t);
-    const line = document.createElementNS(SVG_NS, 'line');
-    line.setAttribute('x1', x);
-    line.setAttribute('x2', x);
-    line.setAttribute('y1', 18);
-    line.setAttribute('y2', 24);
-    line.setAttribute('stroke', 'var(--ink-dim)');
-    axisSvg.appendChild(line);
-
-    const lbl = document.createElementNS(SVG_NS, 'text');
-    lbl.setAttribute('x', x);
-    lbl.setAttribute('y', 13);
-    lbl.setAttribute('text-anchor', 'middle');
-    lbl.setAttribute('fill', 'var(--ink-dim)');
-    lbl.setAttribute('font-family', 'JetBrains Mono');
-    lbl.setAttribute('font-size', '9');
+    const tick = document.createElement('div');
+    tick.className = MAJOR_A.has(t) ? 'bars-tick' : 'bars-tick is-minor';
+    tick.style.left = xPct(t) + '%';
+    const lbl = document.createElement('span');
+    lbl.className = 'bars-tick-label';
     lbl.textContent = t + '°';
-    axisSvg.appendChild(lbl);
+    tick.appendChild(lbl);
+    axisEl.appendChild(tick);
   });
-  // 20°C line on axis
+  // 20°C room-temperature marker
   const rtX = xAt(20);
-  const rtLn = document.createElementNS(SVG_NS, 'line');
-  rtLn.setAttribute('x1', rtX);
-  rtLn.setAttribute('x2', rtX);
-  rtLn.setAttribute('y1', 0);
-  rtLn.setAttribute('y2', 32);
-  rtLn.setAttribute('stroke', 'var(--gold)');
-  rtLn.setAttribute('stroke-width', '1.5');
-  axisSvg.appendChild(rtLn);
-  const rtLbl = document.createElementNS(SVG_NS, 'text');
-  rtLbl.setAttribute('x', rtX + 4);
-  rtLbl.setAttribute('y', 28);
-  rtLbl.setAttribute('fill', 'var(--gold)');
-  rtLbl.setAttribute('font-family', 'JetBrains Mono');
-  rtLbl.setAttribute('font-size', '9');
-  rtLbl.setAttribute('font-weight', '600');
+  const rtTick = document.createElement('div');
+  rtTick.className = 'bars-tick bars-tick-rt';
+  rtTick.style.left = xPct(20) + '%';
+  const rtLbl = document.createElement('span');
+  rtLbl.className = 'bars-tick-label';
   rtLbl.textContent = '20° 常温';
-  axisSvg.appendChild(rtLbl);
+  rtTick.appendChild(rtLbl);
+  axisEl.appendChild(rtTick);
 
   function renderBars() {
     const sorters = {
