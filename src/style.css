@@ -352,6 +352,17 @@ h1 b {
 }
 .p-row dd { color: var(--ink); font-weight: 400; }
 
+/* paired rows — two label/value cells side by side */
+.p-pair { grid-template-columns: 1fr 1fr; align-items: start; }
+.p-cell { display: flex; flex-direction: column; gap: 3px; }
+.p-full { grid-template-columns: 1fr; }
+.p-full dt { margin-bottom: 6px; }
+.p-use {
+  font-family: "Noto Serif JP", serif;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
 .p-cat {
   display: inline-block;
   font-size: 10px;
@@ -982,6 +993,11 @@ footer {
   /* thin out the temp axis so the remaining labels stay readable */
   .bars-tick.is-minor .bars-tick-label,
   .bars-tick-rt .bars-tick-label { display: none; }
+
+  /* compact the element detail table */
+  .panel { padding: 30px 20px; }
+  .p-row { padding: 7px 0; gap: 10px; font-size: 11px; }
+  .p-row dt { font-size: 9px; }
 
   /* section headings — shrink and pin to the top while scrolling the section */
   .timeline-header,
